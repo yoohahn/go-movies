@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Project",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "program": "${workspaceRoot}/main.go",
+      "env": {
+        "GO_DEVELOPMENT": "true",
+        "GO_DEVELOPMENT_PORT": "3003"
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Go Playground</title>
+  </head>
+  <body>
+    <h1>Output from /api/v0/movies</h1>
+    <div><a href="/api/v0/movies">Go to plain api</a></div>
+    <div style="padding-bottom: 1rem" id="div"></div>
+  </body>
+  <script>
+    const div = document.getElementById("div");
+    function printErr(err) {
+      div.innerText = err;
+      console.error(err);
+    }
+    (async () => {
+      try {
+        const data = await fetch("/api/v0/movies", { cache: "no-cache" });
+        console.log(3312);
+        if (data.status === 200) {
+          const json = await data.json();
+          const pre = document.createElement("pre");
+          pre.innerText = JSON.stringify(json, undefined, 2);
+          div.innerHTML = "";
+          div.appendChild(pre);
+        }
+      } catch (err) {
+        printErr(err);
+      }
+    })();
+  </script>
+</html>

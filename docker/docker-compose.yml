@@ -1,0 +1,25 @@
+version: "2"
+
+services:
+  go-mongo:
+    image: mongo:4.4.2
+    container_name: go-mongo
+    restart: always
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    ports:
+      - "27010:27017"
+    volumes:
+      - gomongo:/data/db
+      - ./init-db.sh:/docker-entrypoint-initdb.d/init.sh
+    networks:
+      - go-net
+
+networks:
+  go-net:
+    driver: bridge
+
+volumes:
+  gomongo:
+    driver: local
